@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Sneha</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300&family=Sacramento&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    background:#0a0a0a;
+    color:#f5f5f5;
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+}
+
+/* SECTIONS */
+section{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px 20px;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(2.2rem,5vw,3.2rem);
+    color:#d4af37;
+    letter-spacing:2px;
+}
+
+.hero span{
+    display:block;
+    margin-top:10px;
+    font-size:1.1rem;
+    color:#ccc;
+}
+
+/* HANDWRITTEN */
+.handwrite{
+    margin-top:40px;
+    font-family:'Sacramento',cursive;
+    font-size:clamp(1.5rem,4vw,2.2rem);
+    color:#f1e6c8;
+    min-height:120px;
+    white-space:pre-line;
+}
+
+/* PHOTOS */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:22px;
+    max-width:1000px;
+    width:100%;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:18px;
+    filter:grayscale(100%);
+    transition:0.8s;
+    opacity:0;
+    transform:translateY(30px);
+    animation:fadeUp 1.5s forwards;
+}
+
+.gallery img:hover{
+    filter:grayscale(0%);
+    transform:scale(1.03);
+}
+
+.gallery img:nth-child(1){animation-delay:0.3s;}
+.gallery img:nth-child(2){animation-delay:0.6s;}
+.gallery img:nth-child(3){animation-delay:0.9s;}
+
+@keyframes fadeUp{
+    to{opacity:1;transform:translateY(0);}
+}
+
+/* BUTTON */
+.reveal{
+    margin-top:50px;
+    padding:12px 30px;
+    border:1px solid #d4af37;
+    color:#d4af37;
+    background:transparent;
+    font-size:0.9rem;
+    letter-spacing:2px;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.reveal:hover{
+    background:#d4af37;
+    color:#0a0a0a;
+}
+
+/* SECRET PAGE */
+.secret{
+    display:none;
+    text-align:center;
+    max-width:700px;
+}
+
+.secret h2{
+    font-family:'Sacramento',cursive;
+    font-size:2.5rem;
+    color:#d4af37;
+}
+
+.secret p{
+    margin-top:25px;
+    line-height:1.8;
+    font-size:1rem;
+    color:#ddd;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    font-size:0.75rem;
+    color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SECTION 1 -->
+<section class="hero">
+<div>
+<h1>Happy Birthday</h1>
+<span>Artist — Sneha 🎨</span>
+
+<div class="handwrite" id="write"></div>
+
+<button class="reveal" onclick="openSecret()">A quiet message 🎁</button>
+</div>
+</section>
+
+<!-- SECTION 2 -->
+<section>
+<div class="gallery">
+<img src="images/pic1.jpeg">
+<img src="images/pic2.jpeg">
+<img src="images/pic3.jpeg">
+<img src="images/pic4.jpeg">
+<img src="images/pic5.jpeg">
+<img src="images/pic6.jpeg">
+<img src="images/pic7.jpeg">
+<img src="images/pic8.jpeg">
+<img src="images/pic9.jpeg">
+<img src="images/pic10.jpeg">
+<img src="images/pic11.jpeg">
+</div>
+</section>
+
+<!-- SECRET -->
+<section id="secretSection">
+<div class="secret" id="secret">
+<h2>For You, Sneha</h2>
+<p>
+Happy Birthday,Madam Sneha 🤍<br>
+
+Enjoy your day,<br>
+keep creating,<br>
+and keep smiling.<br>
+
+Wishing you a happy, peaceful,<br>
+and inspiring year ahead. 🎨<br>
+</p>
+</div>
+</section>
+
+<footer>
+made gently — <strong>Dev - Shubh Mehta</strong>
+</footer>
+
+<script>
+const text = `Some artists paint with colors.
+Some paint with silence.
+
+You paint with feeling.
+
+Happy Birthday,
+keep creating — always.`;
+
+let i=0;
+function type(){
+  if(i<text.length){
+    document.getElementById("write").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type,55);
+  }
+}
+type();
+
+function openSecret(){
+  document.getElementById("secret").style.display="block";
+  document.getElementById("secretSection").scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+</body>
+</html>
